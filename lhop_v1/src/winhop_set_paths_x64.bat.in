@@ -1,0 +1,66 @@
+@echo off
+echo.
+echo WARNING: Input all paths without trailing '\' char.
+echo.
+
+rem Path to root folder of Microsotft DirextX SDK
+echo Set path to Microsoft DirectX SDK. 
+set /p tmp_dxsdk_path="Input path (e.g. c:\Program Files (x86)\Microsoft DirectX SDK (March 2009)): "
+echo.
+echo Setting DXSDK_PATH to %tmp_dxsdk_path% ... done
+setx DXSDK_PATH "%tmp_dxsdk_path%" -m
+echo.
+
+rem Path to root folder of boost. This folder must contain subfolders 'boost' and 'lib'
+set tmp_boost_path=@Boost_INCLUDE_DIR@
+echo Setting BOOST_PATH to %tmp_boost_path% ... done
+setx BOOST_PATH "%tmp_boost_path%" -m
+echo.
+
+rem Path to include and lib files for TBB
+set tmp_tbb_inc_path=@TBB_INCLUDE_DIR@
+set tmp_tbb_lib_path=@TBB_LIBRARY_DIRS@
+echo Setting TBB_INC_PATH to %tmp_tbb_inc_path% ... done
+echo Setting TBB_LIB_PATH_X64 to %tmp_tbb_lib_path% ... done
+setx TBB_INC_PATH "%tmp_tbb_inc_path%" -m
+setx TBB_LIB_PATH_X64 "%tmp_tbb_lib_path%" -m
+echo.
+
+rem Path to include and lib files for OpenCL. Folder OPENCL_INC_PATH must contain CL subfolder with CL/opencl.h files while OPENCL_LIB_PATH must point to OpenCL.lib file.
+set tmp_opencl_inc_path=@OPENCL_INCLUDE_DIR@
+set tmp_opencl_lib_path=@OPENCL_LIBRARY@
+echo Setting OPENCL_INC_PATH to %tmp_opencl_inc_path% ... done
+echo Setting OPENCL_LIB_PATH_X64 to %tmp_opencl_lib_path% ... done
+setx OPENCL_INC_PATH "%tmp_opencl_inc_path%" -m
+setx OPENCL_LIB_PATH_X64 "%tmp_opencl_lib_path%" -m
+echo.
+
+rem Path to lib files for OpenCV (cv200.lib, cvaux200.lib, cxcore200.lib ...)
+set tmp_opencv_inc_path=@OpenCV_DIR@\include\opencl
+set tmp_opencv_lib_path=@OpenCV_DIR@\lib
+set tmp_opencv_bin_path=@OpenCV_DIR@\bin
+echo Setting OPENCV_INC_PATH to %tmp_opencv_inc_path% ... done
+echo Setting OPENCV_LIB_PATH_X64 to %tmp_opencv_lib_path% ... done
+setx OPENCV_INC_PATH "%tmp_opencv_inc_path%" -m
+setx OPENCV_LIB_PATH_X64 "%tmp_opencv_lib_path%" -m
+echo.
+
+rem Set path to location of all DLL files needed to run binary
+set /p also_set_path="Do you also want to set values to PATH ? (y/n) "
+if not "%also_set_path%" == "y" (
+	goto end_of_file
+)
+
+echo Set path for TBB bin folder
+set /p tmp_tbb_bin_path="Input folder (e.g. c:\Program Files\tbb30_20100406oss\bin\ia32\vc9): "
+echo.
+
+set tmp_path=%tmp_opencv_bin_path%;%tmp_tbb_bin_path%
+	
+echo Updating PATH with %tmp_path% ... done
+setx PATH "%PATH%;%tmp_path%" -m
+
+
+:end_of_file
+echo.
+set /p nnn="Press enter to exit ..."

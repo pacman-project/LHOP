@@ -1,0 +1,46 @@
+CONTROLS and options
+* View
+	- hold LEFT MOUSE button and move  			= rotate view
+	- CTRL + hold LEFT MOUSE button and move	= move view
+	- Mouse wheel 								= zoom view
+	- CTRL + Mouse wheel 						= change distance between layers (when checked "Show Tree" and selected layer > 0)
+	- Save camera / Load camera 				= save existing viewing position to registry or load viewing position from registry
+
+* File Opening
+	- Layer file (any .ly1, .ly2 .. file) and library file (.plb) can be opened using appropriate open button or by drag-and-drop
+	- WARNING: when loading wrong library (one that was not used to process opened layer file) program might behave unexpectedly
+	
+* Layer and Part selection
+	- Currently displayed layer can be selected in 'Layers list-box'. 
+	- When selected layer, all of its types of parts are displayed in the 'Parts list-box'. 
+	- By clicking on a part type in the 'Parts list-box' you toggle its visibility.
+		- Optionally use "Select all" / "Deselect all" to select or clear all parts
+	- Using some of the options from "Part display options" you can filter out some parts. Filtered parts are shown in gray and are not selected.
+	- When library is also loaded then user can view model of part type by hovering mouse over part in 'Parts list-box'
+	
+* Part display options 	
+	- Reconstr		= when checked each node or part is displayed with all of its descendant nodes
+	- Inhibit		= when checked parts are being filtered by inhibition
+	- First only	= when checked displays only best part found from same locations
+		- when unchecked, user can manually filter parts by R, G and RR responses
+	- Show all		= when checked all parts of selected part types are shown
+		- when unchecked, user can manually list between different parts of same types using forward (>>) and backward (<<) buttons
+		(NOTICE: Works only when one part type is selected in 'Layers list-box')
+	- Show circ. 	= when checked each node is rendered with bigger circle for better visibility of parts
+	- Show tree  	= when checked nodes (up to the selected level) are displayed in a tree
+	- Show line		= (works only when Show tree is checked) when checked, parts of different layers are connected with lines
+	- Show ellipses  = (works only when Show tree is unchecked) when checked, each part is fitted with ellipse
+	- Pick parts	= when checked user can filter (pick) parts from image by RIGHT MOUSE CLICK on them
+	- Hide texture	= when checked then layer1 texture does not get rendered
+	
+* Other functions:
+	- Screenshot	= makes screenshot of existing view and saves it to image into same folder where lyX file is saved
+		- WARNING: screenshots will not be saved if you do not have the privileges to write to the mentioned folder
+	- Make video	= makes screenshot and moves to next file in same folder (as using forward button ">>" next to file open) 
+		- WARNING: once started it will not stop until no more file can be opened
+	- Reset color 	= resets colors back to original value
+	- <color selection list box>	= selects one color for all selected parts (unselected parts will retain same color, that way user can select different colors for different parts)
+
+* Currently disabled / non-functional options
+	- Hypo-nodes	= when checked, displays hypothetical nodes
+	- Hypo-thersh	= when checked, user can manually filter hypothetical nodes by setting threshold value

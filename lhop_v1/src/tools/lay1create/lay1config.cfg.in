@@ -1,0 +1,11 @@
+type                 = struct
+out_dir              = @PROJECT_BINARY_DIR@
+src_dir              = @RESOURCES_DIR@
+layer1_threshold     = 0.1
+power_correction     = 0.6
+scale_sigma          = 1.0
+scale_factor         = 0.707107
+init_size            = 360
+scale_limit          = 100
+border_size          = 100
+use_opencl           = false
