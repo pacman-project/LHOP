@@ -1,0 +1,24 @@
+#***********************************************************
+#***********************************************************
+# A script for learning an individual category
+
+#*****************Training Phase****************************
+# infer0_train.sh: Script for creating the first layer structure, by extracting Gabor features and constructing the first layer parts, in the training 
+# phase. 
+# llearning.sh: Script for learning the part libraries for the layers L=1,2,3,4 in the training phase..
+# infer1-4_training.sh: Inference for the layers L=1,2,3,4 in the training phase.
+# olearning.sh: Learning the object and category layers (i.e. the layers L=5,6) in the training phase.
+# infer4-6_training.sh: Script for inference at the layers L=5,6 in the training phase.
+#*****************Testing Phase****************************
+# infer1-4_testing.sh: Inference for the layers L=1,2,3,4 in the testing phase.
+# infer0_test.sh: Script for creating the first layer structure, by extracting Gabor features and constructing the first layer parts, in the testing 
+# phase. 
+# infer4-6_test.sh: Script for inference at the layers L=5,6 in the testing phase.
+# savelib.sh: Script for displaying the part libraries.
+#***********************************************************
+#***********************************************************
+
+# Learning for the apple category
+# apple: category name and is the name of the folder that contains training and test samples belonging to apple category
+# _applelogos.groundtruth: the pattern of the extensions of the names of files that represent Ground Truth data
+./run_example_for_category.sh apple _applelogos.groundtruth

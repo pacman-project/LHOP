@@ -1,0 +1,37 @@
+#***********************************************************
+#***********************************************************
+# A script for learning individual categories
+#*****************Training Phase****************************
+# infer0_train.sh: Script for creating the first layer structure, by extracting Gabor features and constructing the first layer parts, in the training 
+# phase. 
+# llearning.sh: Script for learning the part libraries at the layers L=1,2,3,4 in the training phase.
+# infer1-4_training.sh: Script for inference at the layers L=1,2,3,4 in the training phase.
+# olearning.sh: Learning the object and category layers (i.e. the layers L=5,6) in the training phase.
+# infer4-6_training.sh: Script for inference at the layers L=5,6 in the training phase.
+#*****************Testing Phase****************************
+# infer1-4_test.sh: Script for inference at the layers L=1,2,3,4 in the testing phase.
+# infer0_test.sh: Script for creating the first layer structure, by extracting Gabor features and constructing the first layer parts, in the testing 
+# phase. 
+# infer4-6_test.sh: Script for inference at the layers L=5,6 in the testing phase.
+# savelib.sh: Script for displaying the part libraries.
+#***********************************************************
+#***********************************************************
+# Category learning
+# $1: Category name.
+# $2: The pattern of Ground Truth files.
+./infer0_train.sh $1 *.png $2
+./llearning.sh $1 layer1lib.plb 
+./infer1-4_training.sh $1
+./olearning.sh $1
+./infer4-6_training.sh $1 *.ly1
+#***********************************************************
+#***********************************************************
+# process testing images
+./infer0_test.sh $1 *.jpg $2
+./infer1-4_test.sh $1 test_*.ly1 $1/olib.plb
+./infer4-6_test.sh $1 *.ly1
+cp $1/layer1/*.groundtruth $1/layerx
+#***********************************************************
+#***********************************************************
+# Diplay learnt libraries (all 6 layers)
+./savelib.sh $1 $1/olib.plb

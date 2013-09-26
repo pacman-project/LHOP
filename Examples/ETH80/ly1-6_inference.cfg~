@@ -1,0 +1,179 @@
+
+############################################################################################################
+########################################## Inference for each layer ########################################
+############################################################################################################
+
+#inference.layer_index = 2
+#inference.start_layer = 2
+#inference.end_layer = 7
+inference.ly1.result_extension   = .ly1
+inference.ly2.result_extension   = .ly2
+inference.ly3.result_extension   = .ly3
+inference.ly4.result_extension   = .ly4
+inference.ly5.result_extension   = .ly5
+inference.ly6.result_extension   = .ly6	
+inference.ly6.result_extension   = .ly6
+
+#################################
+#### Inference for layer one ####
+#################################
+
+inference.ly1_normal.type                  = struct
+inference.ly1_normal.region_lambda_factor  = 0.8
+inference.ly1_normal.layer1_threshold      = 0.1
+inference.ly1_normal.power_correction      = 0.7
+inference.ly1_normal.init_size             = -120
+inference.ly1_normal.max_scales            = 6
+inference.ly1_normal.scale_limit           = 220
+inference.ly1_normal.border_size           = 100
+inference.ly1_normal.scale_factor          = 0.8
+#inference.ly1_normal.response_percent      = 0.2
+inference.ly1_normal.response_percent      = 0.6 # original marko's implementation has 0.2 but due to bug (came from unrelated git fix SHA 06928b677f38d2a8af56936e2cd3e1b9cdd5d589) it was not apperent that this produced too many ly1 parts 
+#inference.ly1_normal.result_extension      = .ly1
+#inference.ly1_normal.min_groundtruth_size  = 200
+#inference.ly1_normal.min_groundtruth_limit = 100
+#inference.ly1_normal.gabor_step            = 30
+#inference.ly1_normal.part_lib_name         = layer1lib.plb
+#inference.ly1_normal.scale_sigma           = 1.2
+#inference.ly1_normal.separate_colors       = true
+#inference.ly1_normal.merge_scales           = 2
+
+inference.ly1_extract.type                  = struct
+inference.ly1_extract.mode                  = extraction
+inference.ly1_extract.groundtruth_delta     = 10
+inference.ly1_extract.region_lambda_factor  = 0.8
+inference.ly1_extract.layer1_threshold      = 0.1
+inference.ly1_extract.power_correction      = 0.6
+inference.ly1_extract.border_size           = 100
+inference.ly1_extract.scale_factor          = 0.875
+inference.ly1_extract.max_max_dimension     = 120
+#inference.ly1_extract.response_percent      = 0.2
+inference.ly1_extract.response_percent      = 0.6 # original marko's implementation has 0.2 but due to bug (came from unrelated git fix SHA 06928b677f38d2a8af56936e2cd3e1b9cdd5d589) it was not apperent that this produced too many ly1 parts 
+inference.ly1_extract.gabor_step            = 30
+
+############################################################
+#### Config values for layer adding, layer 1 -> layer 2 ####
+############################################################
+
+inference.ly2.layer_contraction = 2.0
+inference.ly2.g_response_threshold = 0.5
+inference.ly2.r_response_threshold = 0.2
+inference.ly2.candidate_r_threshold = 0.1
+inference.ly2.candidate_g_threshold = 0.4
+inference.ly2.g_response_pow = 0.6
+inference.ly2.candidate_g_threshold_percent = 0.35
+inference.ly2.realization_ratio_threshold = 0.9
+inference.ly2.ignore_g_distribution = true
+inference.ly2.normalize_histogram = true
+inference.ly2.add_edge_names = true
+inference.ly2.convolution_link_threshold = 0.95
+
+#inference.ly2.shape_check  = false
+#inference.ly2.s_response_threshold = 0.2
+
+############################################################
+#### config values for layer adding, layer 2 -> layer 3 ####
+############################################################
+
+inference.ly3.layer_contraction = 2.0
+inference.ly3.g_response_threshold = 0.3
+inference.ly3.r_response_threshold = 0.2
+inference.ly3.candidate_r_threshold = 0.2
+inference.ly3.candidate_g_threshold = 0.4
+inference.ly3.g_response_pow = 0.6
+inference.ly3.candidate_g_threshold_percent = 0.32
+inference.ly3.realization_ratio_threshold = 0.5
+inference.ly3.ignore_g_distribution = true
+inference.ly3.normalize_histogram = true
+inference.ly3.add_edge_names = true
+inference.ly3.convolution_link_threshold = 0.95
+
+#inference.ly3.shape_check  = true
+#inference.ly3.s_response_threshold = 0.3
+
+############################################################
+#### Config values for layer adding, layer 3 -> layer 4 ####
+############################################################
+
+inference.ly4.layer_contraction = 1.5
+inference.ly4.g_response_threshold = 0.2
+inference.ly4.r_response_threshold = 0.1
+inference.ly4.candidate_r_threshold = 0.1
+inference.ly4.candidate_g_threshold = 0.1
+inference.ly4.g_response_pow = 0.6
+inference.ly4.realization_ratio_threshold = 0.70
+inference.ly4.ignore_g_distribution = true
+inference.ly4.normalize_histogram = true
+inference.ly4.add_edge_names = true
+inference.ly4.convolution_link_threshold = 0.95
+
+#inference.ly4.shape_check  = true
+#inference.ly4.s_response_threshold = 0.4
+#inference.ly4.continuity_factor = 3.0
+
+############################################################
+#### Config values for layer adding, layer 4 -> layer 5 ####
+############################################################
+
+inference.ly5.layer_contraction = 1.0
+inference.ly5.g_response_threshold = 0.2
+inference.ly5.r_response_threshold = 0.05
+inference.ly5.candidate_r_threshold = 0.2
+inference.ly5.candidate_g_threshold = 0.07
+inference.ly5.g_response_pow = 0.6
+inference.ly5.realization_ratio_threshold = 0.70
+inference.ly5.ignore_g_distribution = true
+inference.ly5.normalize_histogram = true
+inference.ly5.add_edge_names = true
+inference.ly5.convolution_link_threshold = 0.95
+inference.ly5.same_position_threshold = 4
+inference.ly5.reconstruction_type    = 9
+
+#inference.ly5.shape_check = true
+#inference.ly5.s_response_threshold = 2.0
+
+############################################################
+#### Config values for layer adding, layer 5 -> layer 6 ####
+############################################################
+
+#inference.ly5.layer_contraction       = 1.0
+#inference.ly5.g_response_threshold    = 0.1
+#inference.ly5.r_response_threshold    = 0.01
+#inference.ly5.candidate_r_threshold   = 0.01
+#inference.ly5.candidate_g_threshold   = 0.1
+#inference.ly5.convolution_threshold   = 0.01
+#inference.ly5.g_response_pow          = 0.9
+#inference.ly5.realization_ratio_threshold = 0.6
+#inference.ly5.min_factor             = 0.8
+#inference.ly5.max_factor             = 1.2
+#inference.ly5.reconstruction_type    = 9
+#inference.ly5.add_edge_names         = true
+#inference.ly5.result_extension           = .ly5
+#inference.ly5.convolution_link_threshold = 0.95
+
+#inference.ly5.s_response_threshold   = 500
+inference.ly5.shape_check                = false
+#inference.ly5.x_response_threshold   = 500
+
+#inference.ly5.normalize_histogram = true
+#inference.ly5.shape_distance_threshold = 20
+#inference.ly5.shape_sc_threshold = 6
+
+############################################################
+#### Config values for layer adding, layer 6 -> layer 7 ####
+############################################################
+inference.ly6.layer_contraction      = 1
+inference.ly6.r_response_threshold   = 0.000
+inference.ly6.g_response_threshold   = 0.000
+inference.ly6.candidate_r_threshold   = 0.000
+inference.ly6.candidate_g_threshold   = 0.000
+inference.ly6.convolution_threshold   = 0.000
+inference.ly6.convolution_threshold   = 0.00
+inference.ly6.identity_g_response    = true
+inference.ly6.realization_ratio_threshold = 0.0
+inference.ly6.reconstruction_type    = 3
+inference.ly6.copy_prev_layer        = false
+inference.ly6.ignore_g_distribution  = true
+inference.ly6.result_extension = .ly6
+
+

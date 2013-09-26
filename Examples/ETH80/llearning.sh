@@ -1,0 +1,1 @@
+./hoplearning ly1-6_learning.cfg train_*.ly1 "action = optimization; pattern = train_%%s_0_0.ly1; library = $1/$2; lib_export_name = $1/lib; src_dir = $1/layer1; learning.optimization.min_layer = 2; learning.optimization.max_layer = 4; learning.optimization.start_layer = 2; learning.optimization.end_layer = 4;"

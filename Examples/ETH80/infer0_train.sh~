@@ -1,0 +1,2 @@
+#!/bin/sh
+./hop1create ly1-6_inference.cfg $2 "inference.ly1.from_namespace = inference.ly1_extract; src_dir=$1/train;out_dir=$1/layer1;out_prefix=train_;groundtruth_extension=$3;"
